@@ -1,6 +1,23 @@
 const axios = require('axios');
 
-async function init() {
+async function init(params) {
+    var lang = params.lang.toUpperCase();
+    if (!['KO', 'JA'].includes(lang)) lang = 'EN';
+    const TEXT = {
+        EN: {
+            ARRIVED: 'Arrived',
+            APPROACHING: 'Approaching'
+        },
+        KO: {
+            ARRIVED: '도착',
+            APPROACHING: '접근'
+        },
+        JA: {
+            ARRIVED: '着',
+            APPROACHING: '近'
+        }
+    };
+    
     var url = 'https://api-public.odpt.org/api/v4/odpt:Train?odpt:operator=odpt.Operator:Toei';
     var response = await axios.get(url);
     var data = [];
@@ -9,10 +26,10 @@ async function init() {
         var stn, status;
         if (e['odpt:toStation'] == null) {
             stn = e['odpt:fromStation'];
-            status = 'Arrived';
+            status = TEXT[lang].ARRIVED;
         } else {
             stn = e['odpt:toStation'];
-            status = 'Approaching';
+            status = TEXT[lang].APPROACHING;
         }
         data.push({
             no: e['odpt:trainNumber'],
