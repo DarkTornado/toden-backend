@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 async function init(params) {
-    var lang = params.lang.toUpperCase();
+    var lang = params.lang;
+	if (lang != undefined) lang = lang.toUpperCase();
     if (!['KO', 'JA'].includes(lang)) lang = 'EN';
     const TEXT = {
         EN: {
