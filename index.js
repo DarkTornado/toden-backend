@@ -1,5 +1,6 @@
 const http = require('http');
 const toden = require('./toden');
+const portNumber = 80; //replace port number which you'd line
 
 http.createServer(async (req, res) => {
     res.writeHead(200, {
@@ -16,7 +17,7 @@ http.createServer(async (req, res) => {
     params = query2object(params);
     res.write(JSON.stringify(await toden(params), null, 4));
     res.end();
-}).listen(80);
+}).listen(portNumber);
 
 
 function query2object(query) {
