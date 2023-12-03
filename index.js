@@ -1,6 +1,6 @@
 const http = require('http');
 const toden = require('./toden');
-const portNumber = 80; //replace port number which you'd line
+const portNumber = 80; //replace port number as you'd like.
 
 http.createServer(async (req, res) => {
     res.writeHead(200, {
