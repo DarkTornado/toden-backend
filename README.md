@@ -25,3 +25,9 @@ $ node index.js
 ```
 
 4. Connect to `http://localhost:portNubmer`.
+
+
+## Parameters
+### lang
+- languague of result
+- `ko` or `en` or `ja`
